@@ -6,7 +6,8 @@
     <title>Webpack + Razor</title>
 </head>
 <body>
-@RenderBody()
-@RenderSection("Scripts", required: false)
+    @RenderBody()
+    <script src="~/lib/app.bundle.js"></script>
+    @RenderSection("Scripts", required: false)
 </body>
 </html>
