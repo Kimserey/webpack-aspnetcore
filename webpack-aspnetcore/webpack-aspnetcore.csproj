@@ -8,6 +8,7 @@
     <Folder Include="Styles\" />
     <Folder Include="Scripts\" />
     <Folder Include="wwwroot\" />
+    <Folder Include="wwwroot\lib\" />
   </ItemGroup>
 
   <ItemGroup>

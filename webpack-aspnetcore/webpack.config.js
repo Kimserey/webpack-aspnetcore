@@ -1,4 +1,5 @@
 const path = require('path');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
     entry: {
@@ -13,11 +14,16 @@ module.exports = {
         rules: [{
             test: /\.(scss)$/,
             use: [
-                'style-loader',
+                MiniCssExtractPlugin.loader,
                 'css-loader',
                 'postcss-loader',
                 'sass-loader'
             ]
         }]
-    }
+    },
+    plugins: [
+        new MiniCssExtractPlugin({
+            filename: "[name].bundle.css"
+        })
+    ]
 };
