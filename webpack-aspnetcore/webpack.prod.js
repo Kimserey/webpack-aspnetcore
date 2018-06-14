@@ -1,14 +1,14 @@
 const merge = require('webpack-merge');
 const common = require('./webpack.common.js');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
-const webpack = require("webpack");
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 
 module.exports = merge(common, {
     entry: {
         app: './Scripts/index.js'
     },
-    mode: 'development',
+    mode: 'production',
     module: {
         rules: [{
             test: /\.(scss)$/,
@@ -23,9 +23,16 @@ module.exports = merge(common, {
     plugins: [
         new MiniCssExtractPlugin({
             filename: "[name].bundle.css"
-        }),
-        new UglifyJSPlugin({
-            sourceMap: true
         })
-    ]
+    ],
+    optimization: {
+        minimizer: [
+            new UglifyJsPlugin({
+                cache: true,
+                parallel: true,
+                sourceMap: true
+            }),
+            new OptimizeCSSAssetsPlugin({})
+        ]
+    },
 });

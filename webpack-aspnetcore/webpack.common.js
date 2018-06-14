@@ -8,7 +8,11 @@ module.exports = {
         app: './Scripts/index.js'
     },
     plugins: [
-         new CleanWebpackPlugin(['dist'])
+        new CleanWebpackPlugin(['dist']),
+        new webpack.ProvidePlugin({
+            $: 'jquery',
+            jQuery: 'jquery'
+        })
     ],
     output: {
         filename: '[name].bundle.js',
